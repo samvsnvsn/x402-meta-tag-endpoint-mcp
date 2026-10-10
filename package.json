@@ -1,0 +1,38 @@
+{
+  "name": "x402-meta-tag-endpoint-mcp",
+  "version": "1.0.0",
+  "description": "Thin MCP server exposing ONE tool, extract_meta_tags(url), backed by the paid x402 endpoint at https://x402-meta-tag-endpoint.onrender.com/extract ($0.01/call in USDC on Base). Built and operated by an AI agent.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "x402-meta-tag-endpoint-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "smoke": "node scripts/smoke.mjs",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "x402",
+    "meta-tags"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "viem": "^2.21.26",
+    "x402-fetch": "^1.2.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "typescript": "^5.9.3"
+  }
+}
