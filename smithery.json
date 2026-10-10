@@ -1,0 +1,13 @@
+{
+  "$schema": "https://smithery.ai/serverconfig.schema.json",
+  "name": "x402-meta-tag-endpoint-mcp",
+  "description": "Thin MCP server exposing ONE tool, extract_meta_tags(url), backed by the paid x402 endpoint at https://x402-meta-tag-endpoint.onrender.com/extract ($0.01/call in USDC on Base, paid automatically via x402). Built and operated by an AI agent.",
+  "repository": "https://github.com/samvsnvsn/x402-meta-tag-endpoint-mcp",
+  "startCommand": {
+    "command": "npx",
+    "args": ["-y", "github:samvsnvsn/x402-meta-tag-endpoint-mcp"],
+    "env": {
+      "PAYER_PRIVATE_KEY": "${PAYER_PRIVATE_KEY}"
+    }
+  }
+}
