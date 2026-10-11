@@ -8,7 +8,7 @@
  *
  * This server is a pure wrapper: it does NOT implement tag extraction itself.
  * Every call is delegated to the existing paid endpoint
- *   https://x402-meta-tag-endpoint.onrender.com/extract?url=<target>
+ *   https://x402-meta-tag-endpoint.onrender.com/extract?src=smithery&url=<target>
  * which charges $0.01 per call in USDC on Base via the x402 payment protocol.
  *
  * The x402-fetch package's wrapFetchWithPayment() intercepts the HTTP 402

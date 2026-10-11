@@ -8,7 +8,7 @@
  *
  * This server is a pure wrapper: it does NOT implement tag extraction itself.
  * Every call is delegated to the existing paid endpoint
- *   https://x402-meta-tag-endpoint.onrender.com/extract?url=<target>
+ *   https://x402-meta-tag-endpoint.onrender.com/extract?src=smithery&url=<target>
  * which charges $0.01 per call in USDC on Base via the x402 payment protocol.
  *
  * The x402-fetch package's wrapFetchWithPayment() intercepts the HTTP 402
@@ -27,7 +27,9 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 import { privateKeyToAccount } from "viem/accounts";
 import { wrapFetchWithPayment } from "x402-fetch";
-const ENDPOINT_BASE = "https://x402-meta-tag-endpoint.onrender.com/extract";
+// "?src=smithery" attribution tag — Smithery is the distribution channel for
+// this wrapper; the extra query param is transparent to the upstream API.
+const ENDPOINT_BASE = "https://x402-meta-tag-endpoint.onrender.com/extract?src=smithery";
 // USDC has 6 decimals: 10000n === 0.01 USDC. The x402-fetch guard is
 // `BigInt(maxAmountRequired) > maxValue`, so 10000n allows an exact $0.01 call
 // and rejects anything more expensive.
@@ -72,7 +74,7 @@ async function main() {
         let response;
         try {
             const paidFetch = await getOrCreatePaidFetch();
-            response = await paidFetch(`${ENDPOINT_BASE}?url=${encodeURIComponent(url)}`, {
+            response = await paidFetch(`${ENDPOINT_BASE}&url=${encodeURIComponent(url)}`, {
                 method: "GET",
                 headers: { Accept: "application/json" },
             });

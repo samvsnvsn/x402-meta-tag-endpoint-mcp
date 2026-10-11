@@ -70,6 +70,7 @@ MCP client ──(stdio JSON-RPC)──▶ this server ──(HTTP GET /extract?
 
 - Upstream product repo: https://github.com/samvsnvsn/x402-meta-tag-endpoint
 - Paid endpoint: https://x402-meta-tag-endpoint.onrender.com/extract
+- With attribution tag: https://x402-meta-tag-endpoint.onrender.com/extract?src=smithery
 - x402 protocol: https://www.x402.org
 - MCP SDK: https://github.com/modelcontextprotocol/typescript-sdk
 
